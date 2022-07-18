@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.Repositories;
+using PlatformService.SyncDataServices.Http;
 
 namespace PlatformService.Extensions
 {
@@ -28,6 +30,9 @@ namespace PlatformService.Extensions
             services.AddSwaggerConfiguration();           
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPlatformRepository, PlatformRepository>();
+            services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
+            services.AddSingleton<IMessageBusClient, MessageBusClient>();
+
             return services;
         }
     }
