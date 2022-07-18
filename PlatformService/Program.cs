@@ -1,3 +1,4 @@
+using PlatformService.Data;
 using PlatformService.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,5 +24,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+DataSeed.PrepPopulation(app, app.Environment.IsProduction());
 app.Run();
