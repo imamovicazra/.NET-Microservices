@@ -37,5 +37,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+DataSeed.PrepPopulation(app);
 
 app.Run();
